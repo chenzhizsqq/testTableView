@@ -11,9 +11,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     let tableView = UITableView()
+    
+    var data = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        for x in 0...100{
+            data.append("data.append \(x)")
+        }
         
         view.addSubview(tableView)
         
@@ -29,12 +35,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        //10
+        data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell",for: indexPath)
-        cell.textLabel?.text = "cell \(String(indexPath.row+1))"
+        //cell.textLabel?.text = "cell \(String(indexPath.row+1))"
+        cell.textLabel?.text = data[indexPath.row]
         return cell
     }
 
